@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Farmer's Market</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2b7a0b;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            flex: 1;
+            padding: 10px;
+            background: #e0e0e0;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #2b7a0b;
+        }
+
+        .tabs button.active {
+            background: #2b7a0b;
+            color: white;
+        }
+
+        form {
+            display: none;
+            flex-direction: column;
+        }
+
+        form.active {
+            display: flex;
+        }
+
+        form input,
+        form select {
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        form button {
+            padding: 12px;
+            background: #2b7a0b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        form button:hover {
+            background: #1e5307;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #2b7a0b;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            text-align: center;
+            color: #2b7a0b;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Register</h2>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('vendor')">Vendor</button>
+            <button class="tab-btn" onclick="openTab('customer')">Customer</button>
+        </div>
+
+        <!-- ---------------- VENDOR FORM ---------------- -->
+        <form id="vendor" class="active" method="POST" action="register.php">
+            <input type="text" name="v_name" placeholder="Name" required>
+            <input type="text" name="v_nic" placeholder="NIC" required>
+            <input type="text" name="v_contact" placeholder="Contact" required>
+            <input type="text" name="v_address" placeholder="Address" required>
+            <input type="text" name="v_category" placeholder="Product Category" required>
+            <input type="password" name="v_password" placeholder="Password" required>
+            <button type="submit" name="register_vendor">Register as Vendor</button>
+        </form>
+
+        <!-- ---------------- CUSTOMER FORM ---------------- -->
+        <form id="customer" method="POST" action="register.php">
+            <input type="text" name="c_name" placeholder="Name" required>
+            <input type="text" name="c_contact" placeholder="Contact" required>
+            <input type="email" name="c_email" placeholder="Email" required>
+            <input type="password" name="c_password" placeholder="Password" required>
+            <button type="submit" name="register_customer">Register as Customer</button>
+        </form>
+
+        <div class="links">
+            <a href="index.html">Login</a> |
+            <a href="#">Home</a>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            document.querySelectorAll('form').forEach(f => f.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
